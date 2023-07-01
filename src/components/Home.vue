@@ -1,12 +1,24 @@
 <!-- eslint-disable vue/multi-word-component-names -->
+ <!--eslint-disable-->
 <template>
     <Layout>
-      
         <template #header>
             <Header></Header>
         </template>
         <template #resume>
-           <Resume></Resume>
+           <Resume 
+           :label=Total saving 
+           :total-amount=1000000
+           :amount=amount>
+          <template #graphic>
+             graphic
+          </template>
+         <template #action>
+             action
+         </template>
+          </Resume>
+           
+        
         </template>
         <template #movements>
           <Movements></Movements>
@@ -26,6 +38,11 @@ export default {
     Header,
     Resume,
     Movements,
-  }
-}
+  },
+  data() {
+    return {
+      amount: null,
+    }
+  },
+};
 </script>

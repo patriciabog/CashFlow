@@ -1,4 +1,5 @@
 <!-- eslint-disable vue/multi-word-component-names -->
+ <!--eslint-disable-->
 <template>
     <header>
         <img
