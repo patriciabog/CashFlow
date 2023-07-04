@@ -10,6 +10,7 @@
             alt="close">
         </div>
         <div class="body">
+            <!--We use slot to to make it reusable instead of props like in react -->
             <slot></slot>
         </div>
     </div>
