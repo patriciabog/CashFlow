@@ -1,7 +1,7 @@
 <!-- eslint-disable vue/multi-word-component-names -->
  <!--eslint-disable -->
 <template>
-   <button @click="showModal = true">Add movement</button>
+   <button @click="showModal = true">Add transaction</button>
    <teleport to='#app'>
     <Modal v-show="showModal" @close="showModal = false">
          <form @submit.prevent="submit">
@@ -28,7 +28,7 @@
                 </label>  
             </div>
             <div>
-                <button class="action">Add movement</button>
+                <button class="action">Add transaction</button>
             </div>
          </form>
     </Modal>
