@@ -32,7 +32,6 @@
     top: 0;
     bottom: 0;
     background-color: white;
-    
 }
 
 .head {

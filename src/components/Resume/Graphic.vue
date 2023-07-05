@@ -119,7 +119,7 @@ watch(pointer, (value) => {
   
   }
     p {
-        margin-top: 5rem;
+        margin-top: 1rem;
         font-size: 1.5rem;
     }
  }
@@ -129,7 +129,6 @@ watch(pointer, (value) => {
     }
     p {
         margin-top: 0rem;
-        
     }
  }
 

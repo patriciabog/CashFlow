@@ -71,8 +71,8 @@ export default {
     
     return lastDays.map((m, i) => {
       const lastMovements = lastDays.slice(0, i + 1);
-      return lastMovements.reduce((sum, movement) => {
-         return sum + movement
+      return lastMovements.reduce((suma, movement) => {
+         return suma + movement
       }, 0);
     });
     },
@@ -111,3 +111,4 @@ export default {
   }
 };
 </script>
+

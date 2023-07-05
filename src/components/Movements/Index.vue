@@ -56,4 +56,8 @@
     gap: 8px;
     overflow-y: scroll;
 }
+
+ @media all and (min-width: 768px) {
+  
+ }
 </style>

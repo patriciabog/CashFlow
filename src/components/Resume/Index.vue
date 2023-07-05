@@ -7,13 +7,12 @@
       <div class="box">
         <div class="graphic">
             <slot name="graphic"></slot>
-          </div>
-          <div class="action">
+        </div>
+        <div class="action">
             <slot name="action"></slot>
-          </div>
-      </div>
-      
-   </main>
+        </div>
+        </div> 
+    </main>
 </template>
 
 <script>
@@ -57,19 +56,31 @@ export default {
 </script>
 
 <style scoped>
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
 main {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    width: 100%;
+    width: 100vw;
+    height: 100vh;
     background-color: #0C134F;
     overflow: scroll;
+}
+.box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 h1,
 p {
-    margin-top: 6rem;
+    margin-top: 8rem;
     text-align: center;
     color: white;
 }
@@ -85,20 +96,21 @@ h1 {
     align-items: center;
     width: 100%;
     box-sizing: border-box;
-
 }
 @media all and (min-width: 768px) {
-   .graphic {
-    margin-top: -2rem;
-   }
+    .box {
+    margin-bottom: 8rem;
+  
+}
+  
  h1,
 p {
-    margin-top: 7rem;
+    margin-top: 25rem;
     font-size: 2rem;
 }
 
 h1 {
-    margin-top: 2px;
+    margin-top: 1rem;
     color: var(--brand-green);
     font-size: 3rem;
 }
@@ -109,9 +121,18 @@ h1 {
         flex-direction: row;
         justify-content: center;
         align-items: center;
+        background-size: contain;
+        background-position: center;
     }
+
     .graphic {
-     height: 23rem;
- }
+     height: 27rem;
+     margin: 1rem;
+     width: 50%;
+    }
+    
+    
+   
+   
 }
 </style>

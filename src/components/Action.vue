@@ -66,23 +66,27 @@ const submit = () => {
 </script>
 
 <style scoped>
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
 button {
     color: white;
     font-size: 1.25rem;
     background-color: #FF7A00;
     border: none;
-    width: 100%;
+    width: 20rem;
+    height: 5rem;
     padding: 24px 60px;
     border-radius: 60px;
-    box-sizing: border-box;
-    margin-bottom: 3rem;
-   
-    
+    margin-bottom: 8rem;
+    cursor: pointer;
 }
 
 form {
     font-size: 1.24rem;
-    width: 100%;
+    width: 100%;  
 }
 
 form .action {
@@ -137,16 +141,17 @@ input[type="radio"]:checked {
 }
 @media all and (min-width: 768px) {
     button {
-        margin-bottom: 5rem;
-        margin-top: 2rem;
+        width: 25rem;
+        height: 6rem;
         font-size: 2rem;
+       
     }
 }
 @media all and (min-width: 1200px) {
      button {
-       margin-right: 20rem;
-       margin-left: -20rem;
-       padding: 1.7rem 8rem;
+       width: 18rem;
+       height: 5rem;
+       font-size: 1.5rem;
         
     }
 }
