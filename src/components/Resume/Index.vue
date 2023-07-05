@@ -4,12 +4,15 @@
    <main>
       <p>{{ labelVisual }}</p>
       <h1>{{ amountCurrency }}</h1>
-      <div class="graphic">
-        <slot name="graphic"></slot>
+      <div class="box">
+        <div class="graphic">
+            <slot name="graphic"></slot>
+          </div>
+          <div class="action">
+            <slot name="action"></slot>
+          </div>
       </div>
-      <div class="action">
-        <slot name="action"></slot>
-      </div>
+      
    </main>
 </template>
 
@@ -60,16 +63,19 @@ main {
     align-items: center;
     flex-direction: column;
     width: 100%;
+    background-color: #0C134F;
+    overflow: scroll;
 }
 
 h1,
 p {
-    margin-top: 5rem;
+    margin-top: 6rem;
     text-align: center;
+    color: white;
 }
 
 h1 {
-    margin-top: 14px;
+    margin-top: 5px;
     color: var(--brand-green);
 }
 
@@ -78,7 +84,34 @@ h1 {
     justify-content: center;
     align-items: center;
     width: 100%;
-    padding: 48px 24px;
     box-sizing: border-box;
+
+}
+@media all and (min-width: 768px) {
+   .graphic {
+    margin-top: -2rem;
+   }
+ h1,
+p {
+    margin-top: 7rem;
+    font-size: 2rem;
+}
+
+h1 {
+    margin-top: 2px;
+    color: var(--brand-green);
+    font-size: 3rem;
+}
+}
+@media all and (min-width: 1200px) {
+    .box {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+    .graphic {
+     height: 23rem;
+ }
 }
 </style>

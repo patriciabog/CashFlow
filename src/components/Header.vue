@@ -25,11 +25,14 @@ header {
     justify-content: space-around;
     align-items: center;
     width: 100vw;
+    
+
 }
 
 img,
 span {
-    width: 48px;
+    margin: 1rem;
+    width: 4.8rem;
 }
 
 h1 {
@@ -39,5 +42,13 @@ h1 {
 
 h1 span {
     color: var(--brand-green);
+}
+
+@media all and (min-width: 768px) {
+    img {
+        font-size: 50rem;
+    }
+    h1 {
+        font-size: 3rem;   }
 }
 </style>

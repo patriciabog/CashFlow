@@ -3,8 +3,12 @@
 
  <template>
     <div>
-        <svg viewBox="0 0 300 200 ">
-         
+        <svg
+            @touchstart="tap"
+            @touchmove="tap"
+            @touchend="untap"
+            viewBox="0 0 300 200"
+        >
             <line
                 stroke="#c4c4c4"
                 stroke-width="2"
@@ -20,27 +24,27 @@
                 :points="points"
             />
             <line
+                v-show="showPointer"
                 stroke="#04b500"
                 stroke-width="2"
-                x1="200"
+                :x1="pointer"
                 y1="0"
-                x2="200"
+                :x2="pointer"
                 y2="200"
             />
-        </svg>
-        <p>The last 30 days</p>
-      <div>{{ zero }}</div>
+             </svg>
+        <p>The last 90 days</p>
     </div>
  </template>
+
 <!--we use the composition sintaxis-->
  <script setup>
-import { toRefs, defineProps, computed } from 'vue';
-
+ import { ref, toRefs, defineProps, defineEmits, computed, watch } from 'vue';
  const props = defineProps({
-    amounts: {
-        type: Array,
-        default: () => [],
-    }
+     amounts: {
+         type: Array,
+         default: () => [],
+     }
  });
 
 const { amounts } = toRefs(props);
@@ -53,10 +57,10 @@ const amountToPixels = (amount) => {
     const amountAbs = amount + Math.abs(min);
     const minmax = Math.abs(max) + Math.abs(min);
 
-    return 200 - ((amountAbs * 100) / minmax) * 2;
+   return 200 - ((amountAbs * 100) / minmax) * 2;
 }
  const zero = computed(() => {
-    return amountToPixels(0);
+     return amountToPixels(0);
  });
 
  const points = computed(() => {
@@ -64,19 +68,69 @@ const amountToPixels = (amount) => {
      return amounts.value.reduce((points, amount, i) => {
          const x = (300 / total) * (i + 1);
          const y = amountToPixels(amount);
-         console.log(y);
          return `${points} ${x},${y}`;
-     }, "0, 100");
+     }, `0, ${amountToPixels(amounts.value.length ? amounts.value[0] : 0)}`);
  });
+
+ const showPointer = ref(false);
+ const pointer = ref(0);
+const emit = defineEmits(["select"]);
+
+watch(pointer, (value) => {
+    const index = Math.ceil((value / (300 / amounts.value.length)));
+    if (index < 0 || index > amounts.value.length) return;
+    emit("select", amounts.value[index -1]);
+});
+
+ const tap = ({ target, touches }) => {
+     showPointer.value = true;
+     const elementWidth = target.getBoundingClientRect().width;
+     const elementX = target.getBoundingClientRect().x;
+     const touchX = touches[0].clientX;
+     pointer.value = ((touchX - elementX) * 300) / elementWidth;
+ 
+ }
+ const untap = () => {
+     showPointer.value = false;
+ }
 
 </script>
 
  <style scoped>
+
  svg {
-     width: 100%;
+    width: 90vw;
+    height: 35vh;
+    background-color: #070F4E;
+    border: none;
+  
  }
 
  p {
      text-align: center;
+     color: white;
  }
+ @media all and (min-width: 768px) {
+     svg {
+     width: 100vw;
+     height: 40vh;
+     background-color: #070F4E;
+     border: none;
+  
+  }
+    p {
+        margin-top: 5rem;
+        font-size: 1.5rem;
+    }
+ }
+ @media all and (min-width: 1200px) {
+    svg {
+        margin-bottom: 1rem;
+    }
+    p {
+        margin-top: 0rem;
+        
+    }
+ }
+
 </style>

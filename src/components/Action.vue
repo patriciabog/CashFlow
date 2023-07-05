@@ -46,9 +46,22 @@ const amount = ref(0);
 const description = ref("");
 const movementType = ref("Income");
 
+const emit= defineEmits(["create"]);
+
 const submit = () => {
     showModal.value = !showModal.value;
-}
+    emit("create", {
+        title:title.value,
+        description: description.value,
+        amount: movementType.value === "Income" ? amount.value : -amount.value,
+        time:new Date(),
+        id: new Date(),
+    });
+    title.value = "";
+    description.value = "";
+    amount.value = 0;
+    movementType.value = "Income";
+};
  
 </script>
 
@@ -56,12 +69,15 @@ const submit = () => {
 button {
     color: white;
     font-size: 1.25rem;
-    background-color: var(--brand-blue);
+    background-color: #FF7A00;
     border: none;
     width: 100%;
     padding: 24px 60px;
     border-radius: 60px;
     box-sizing: border-box;
+    margin-bottom: 3rem;
+   
+    
 }
 
 form {
@@ -118,5 +134,20 @@ input[type="radio"] {
 
 input[type="radio"]:checked {
     background-color: var(--brand-blue);
+}
+@media all and (min-width: 768px) {
+    button {
+        margin-bottom: 5rem;
+        margin-top: 2rem;
+        font-size: 2rem;
+    }
+}
+@media all and (min-width: 1200px) {
+     button {
+       margin-right: 20rem;
+       margin-left: -20rem;
+       padding: 1.7rem 8rem;
+        
+    }
 }
 </style>
